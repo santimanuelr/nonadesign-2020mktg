@@ -5,7 +5,7 @@ import { rideTheme } from 'common/src/theme/ride';
 import { ResetCSS } from 'common/src/assets/css/style';
 import { GlobalStyle, ContentWrapper } from '../containers/Ride/ride.style';
 import { DrawerProvider } from 'common/src/contexts/DrawerContext';
-import Navbar from '../containers/Ride/Navbar';
+import Header from '../containers/Ride/Header';
 import Footer from '../containers/Ride/Footer';
 import SEO from '../components/seo';
 
@@ -22,15 +22,15 @@ export default () => {
         <ContentWrapper>
           <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
             <DrawerProvider>
-              <Navbar />
+              <Header />
             </DrawerProvider>
           </Sticky>
           
-          <ContentWrapper>
+          <ContentSectionWrapper>
 
 
             
-          </ContentWrapper>
+          </ContentSectionWrapper>
 
           <Footer />
         </ContentWrapper>
