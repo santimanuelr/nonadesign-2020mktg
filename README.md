@@ -1,97 +1,237 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# SuperProps React Theme
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+```
+yarn
+```
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+```
+// For starting GatsbyJs Server run
+yarn gatsby-dev
+```
 
-## 🚀 Quick start
+GatsbyJs server will start in `localhost:8000`
 
-1.  **Create a Gatsby site.**
+```
+// For starting NextJs Server run
+yarn next-dev
+```
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+NextJs Server will start in `localhost:3000`
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+Available routes are below
 
-1.  **Start developing.**
+```
+/app
+/saas
+/saasmodern
+/saasclassic
+/hosting
+/portfolio
+/ride
+/crypto
+/charity
+/interior
+/appmodern
+/appclassic
+```
 
-    Navigate into your new site’s directory and start it up.
+# Folder Structure
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+```
+/packages
+	/common [All common components and resource]
+		/Assets
+		/components
+		/contexts
+		/data
+		/theme
+	/functions
+	/landing [NextJs version of the project]
+	/landing-gatsby [Gatsby version of the project]
+```
 
-1.  **Open the source code and start editing!**
+# Stack We Have Used
 
-    Your site is now running at `http://localhost:8000`!
+1. Lerna (A tool for managing JavaScript projects with multiple packages. https://lernajs.io)
+2. Yarn Workspace
+3. React Js and Next Js
+4. Gatsby Js
+5. Styled System and Styled Components
+6. Firebase Deployment.
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+# Development
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+Follow the below procedure to go with the development process.
 
-## 🧐 What's inside?
+## GatsbyJs
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+If you want to develop only for gatsbyjs then then you don't need the `/landing` folder which contains only nextjs related code. You can delete `/landing` folder.
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
+For any specific template like the template under `/app` route. If you want to use this template only, then you have to follow below procedure.
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+1. Go to `/landing-gatsby/src/pages/`
+2. now copy all the content from `app.js`
+3. Paste all the content in `/landing-gatsby/src/pages/index.js`
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+Now for cleaning the unused code in your project follow the below procedure.
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for. 
+1. Now you can delete all other pages except `404.js`. That mean in your `/pages` folder you will have two files `index.js` and `404.js`
+2. From `/landing-gatsby/src/containers/` folder you can delete all other folder except `App` and `Error`
+3. From `/common/src/assets/image/` folder you can delete all other folder except `app`. Do not delete any files from there like `404.svg`, `error.svg` etc.
+4. From `/common/src/data/` folder you can delete all other folder except `App`.
+5. From `/common/src/theme/` folder you can delete all other folder except `app`. Do not delete the `index.js` file.
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+Now if you start your `gatsbyjs` server with `yarn gatsby-dev` then you will get your server running on `localhost:8000`
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+## NextJs
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+If you want to develop only for `nextjs` then then you don't need the `/landing-gatsby` folder. You can delete the folder.
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+For any specific template like the template under `/app` route. If you want to use this template only, then you have to follow below procedure.
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+1. Go to `/landing/pages/`
+2. now copy all the content from `app.js`
+3. Paste all the content in `/landing/pages/index.js`
 
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
+Now for cleaning the unused code in your project follow the below procedure.
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+1. Now you can delete all other pages except `_app.js`, `_documents.js` and `_error.js`. That mean in your `/pages` folder you will have four files `index.js`, `_app.js`, `_documents.js` and `error.js`
+2. From `/landing/containers/` folder you can delete all other folder except `App` and `Error`
+3. From `/common/src/assets/image/` folder you can delete all other folder except `app`. Do not delete any files from there like `404.svg`, `error.svg` etc.
+4. From `/common/src/data/` folder you can delete all other folder except `App`.
+5. From `/common/src/theme/` folder you can delete all other folder except `app`. Do not delete the `index.js` file.
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+To start the server for `nextjs` you have to run `yarn nextjs-dev` and the server will start on `locahost:3000`.
 
-12. **`README.md`**: A text file containing useful reference information about your project.
+# Explaining Containers
 
-## 🎓 Learning Gatsby
+In the `containers` directory you will get folder for our every template. If you want to use App template. Then in the `App` directory you will get folders containing different section of the template like `Banner`, `Footer`, `Testimonial`, `Navbar` etc.
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+All of these containers contains regular reactjs code.
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+# Deployment
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+For deploying your final project you have to build your project first. To build the project you have to follow below procedure.
 
-## 💫 Deploy
+### GatsbyJs
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/harshnagoratela/nonadesign-2020mktg)
+Run the below command on
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+```
+yarn gatsby-build
+
+// To check the build version locally run below command
+// Not necessary if you don't want to check on your local.
+
+yarn gatsby-serve
+```
+
+If you run `yarn gatsby-serve` then the build version the the project will start in `localhost:9000` . Navigate to the url you will get your site up and running.
+
+### NextJs
+
+To build the nextjs version run below commands.
+
+```
+yarn next-build
+
+// To check the build version locally run below command
+// Not necessary if you don't want to check on your local.
+
+yarn next-start
+```
+
+If you want to host the static html version of your nextjs project then run the below command to build static version
+
+```
+yarn next-export
+```
+
+# Deployment Support
+
+## now.sh
+
+### GatsbyJs
+
+We have given now.sh deployment by default. For hosting the project in now.sh first you have to rename `gatsby-landing.now.json` to `now.json`.
+
+You can change the name according to your project in now.json file like:
+
+```
+{
+	"name": "your_project_name"
+}
+```
+
+Now run below command after building the project.
+
+```
+now
+```
+
+### NextJs
+
+For deploying nextjs on now.sh you have rename `landing.now.json` to `now.json`. Now run below command after building the project.
+
+```
+now
+```
+
+You can change the name according to your project in now.json file like:
+
+```
+{
+	"name": "your_project_name"
+}
+```
+
+> **Make sure you have `now-cli` installed in your system.**
+
+## Firebase
+
+### NextJs
+
+Rename `landing.firebase.json` to `firebase.json`. Then build your project with `nexjs` build command we have discussed above.
+
+Before running the below deploy command, you have to delete the `/public/index.html` file. and
+go to `/landing/package.json`, find engines and do the following
+
+```
+"engines": {
+    "node": "8"
+}
+```
+
+Then, To deploy to your site, run the following command from the root directory.
+
+```
+yarn firebase-deploy
+```
+
+> **Make sure you have `firebase-tools` installed on your machine.**
+
+## Netlify
+
+At first, open an account on netlify and go to `sites` tab.
+
+### NextJs
+
+Run the below command to make the project netlify deploy ready.
+
+```
+yarn netlify-deploy
+```
+
+After running the above command go to `/landing` folder. You will find a `out` folder there. Drag
+and drop this `out` folder on netlify `sites` tab. Now after finishing the upload you are ready to go.
+
+### GatsbyJs
+
+If you want to host the `gatsbyjs` project, go to your command line and run this command on root directory.
+
+```
+yarn gatsby-build
+```
+
+After running above command go to `landing-gatsby` folder. You will find a `public` folder
+there. Drag and drop this `public` folder on netlify `sites` tab.
