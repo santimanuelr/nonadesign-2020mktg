@@ -11,6 +11,11 @@ import GlobalStyle, {
 } from '../containers/AppClassic/appClassic.style';
 
 import SEO from '../components/seo';
+import Container from 'common/src/components/UI/Container';
+import PageSectionWrapper, {
+  PageSectionContent,
+  PageSectionImage,
+} from '../containers/Custom/PageSection/pagesection.style';
 
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -31,20 +36,24 @@ export default ({ data }) => {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-
-
-            <h1> {data.wordpressPost.title} </h1>
-            <p>
-              Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
-            </p>
-            <Img sizes={data.wordpressPost.featured_media.localFile.childImageSharp.sizes} alt={data.wordpressPost.title} style={{ maxHeight: 450 }} />
-            <div
-              style={{ marginTop: 20 }}
-              dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
-            />
-
-
+            <PageSectionWrapper id="home">
+              <Container>
+                <PageSectionContent>
+                  <h1> {data.wordpressPost.title} </h1>
+                  <p>
+                    Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
+                  </p>
+                  <Img sizes={data.wordpressPost.featured_media.localFile.childImageSharp.sizes} alt={data.wordpressPost.title} style={{ maxHeight: 450 }} />
+                  <div
+                    style={{ marginTop: 20 }}
+                    dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
+                  />
+                </PageSectionContent>
+              </Container>
+            </PageSectionWrapper>
           </ContentWrapper>
+
+
           <Footer />
         </AppWrapper>
       </>

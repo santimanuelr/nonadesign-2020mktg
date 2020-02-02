@@ -11,6 +11,11 @@ import GlobalStyle, {
 } from '../containers/AppClassic/appClassic.style';
 
 import SEO from '../components/seo';
+import Container from 'common/src/components/UI/Container';
+import PageSectionWrapper, {
+  PageSectionContent,
+  PageSectionImage,
+} from '../containers/Custom/PageSection/pagesection.style';
 
 import { graphql } from "gatsby"
 
@@ -30,12 +35,14 @@ export default ({ data }) => {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-
-
-            <h1>{data.wordpressPage.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.content }} />
-
-
+            <PageSectionWrapper id="home">
+              <Container>
+                <PageSectionContent>
+                  <h1>{data.wordpressPage.title}</h1>
+                  <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.content }} />
+                </PageSectionContent>
+              </Container>
+            </PageSectionWrapper>
           </ContentWrapper>
           <Footer />
         </AppWrapper>

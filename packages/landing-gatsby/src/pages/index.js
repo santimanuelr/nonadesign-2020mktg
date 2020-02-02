@@ -4,7 +4,9 @@ import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
 import Sticky from 'react-stickynode';
 import Navbar from '../containers/AppClassic/Navbar';
-import Banner from '../containers/AppClassic/Banner';
+import Banner from '../containers/Custom/Banner';
+import About from '../containers/Custom/About';
+import Teaser from '../containers/Custom/Teaser';
 import Customer from '../containers/AppClassic/Customer';
 import KeyFeatures from '../containers/AppClassic/KeyFeatures';
 import AppSlider from '../containers/AppClassic/AppSlider';
@@ -23,7 +25,11 @@ import GlobalStyle, {
 
 import SEO from '../components/seo';
 
-export default function() {
+import { graphql } from "gatsby";
+
+export default function ({data}) {
+  const page  = data.wordpressPage;
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -36,7 +42,9 @@ export default function() {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-            <Banner />
+            <Banner inputdata={page.acf} />
+            <About inputdata={page.acf} />
+            <Teaser inputdata={page.acf} />
             <Customer />
             <KeyFeatures />
             <AppSlider />
@@ -54,3 +62,35 @@ export default function() {
     </ThemeProvider>
   );
 }
+
+export const query = graphql`
+  query homePageQuery {
+    wordpressPage(slug: {eq: "gatsby-homepage"}) {
+      slug
+      title
+      acf {
+        about_heading
+        about_link_title
+        about_parameter1_name
+        about_parameter1_value
+        about_parameter2_name
+        about_parameter2_value
+        banner_subtitle
+        banner_title
+        teaser_footer
+        teaser_header
+        teaser_image {
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+        teaser_subtitle
+        teaser_title
+      }
+    }
+  }
+`
