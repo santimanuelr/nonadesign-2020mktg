@@ -1,46 +1,49 @@
-import React, { Fragment } from 'react';
-import Sticky from 'react-stickynode';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { rideTheme } from 'common/src/theme/ride';
+import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
-import { GlobalStyle, ContentWrapper } from '../containers/Ride/ride.style';
-import { DrawerProvider } from 'common/src/contexts/DrawerContext';
-import Header from '../containers/Ride/Header';
-import Footer from '../containers/Ride/Footer';
+import Sticky from 'react-stickynode';
+import Navbar from '../containers/AppClassic/Navbar';
+import Footer from '../containers/AppClassic/Footer';
+import GlobalStyle, {
+  AppWrapper,
+  ContentWrapper,
+} from '../containers/AppClassic/appClassic.style';
+
 import SEO from '../components/seo';
 
-import ContentSectionWrapper from '../containers/Ride/ContentSectionWrapper';
-
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 
 export default ({ data }) => {
   return (
-    <ThemeProvider theme={rideTheme}>
-      <Fragment>
+    <ThemeProvider theme={theme}>
+      <>
         <SEO
           title={data.wordpressPage.title}
           description={data.wordpressPage.excerpt}
         />
         <ResetCSS />
         <GlobalStyle />
-        <ContentWrapper>
-          <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
-            <DrawerProvider>
-              <Header />
-            </DrawerProvider>
+
+        <AppWrapper>
+          <Sticky top={0} innerZ={9999} activeClass="sticky-active">
+            <Navbar />
           </Sticky>
-          <ContentSectionWrapper>
+          <ContentWrapper>
+
+
             <h1>{data.wordpressPage.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.content }} />
-          </ContentSectionWrapper>
 
+
+          </ContentWrapper>
           <Footer />
-        </ContentWrapper>
-      </Fragment>
+        </AppWrapper>
+      </>
     </ThemeProvider>
   );
-};
+}
+
 
 export const query = graphql`
   query($id: Int!) {

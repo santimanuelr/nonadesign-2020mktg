@@ -1,40 +1,39 @@
-import React, { Fragment } from 'react';
-import Sticky from 'react-stickynode';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { rideTheme } from 'common/src/theme/ride';
+import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
-import { GlobalStyle, ContentWrapper } from '../containers/Ride/ride.style';
-import { DrawerProvider } from 'common/src/contexts/DrawerContext';
-import Header from '../containers/Ride/Header';
-import Footer from '../containers/Ride/Footer';
+import Sticky from 'react-stickynode';
+import Navbar from '../containers/AppClassic/Navbar';
+import Footer from '../containers/AppClassic/Footer';
+import GlobalStyle, {
+  AppWrapper,
+  ContentWrapper,
+} from '../containers/AppClassic/appClassic.style';
+
 import SEO from '../components/seo';
 
-import ContentSectionWrapper from '../containers/Ride/ContentSectionWrapper';
-
-
-export default () => {
+export default function() {
   return (
-    <ThemeProvider theme={rideTheme}>
-      <Fragment>
-        <SEO title="Page Title" />
+    <ThemeProvider theme={theme}>
+      <>
+        <SEO title="App Classic" />
         <ResetCSS />
         <GlobalStyle />
-        <ContentWrapper>
-          <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
-            <DrawerProvider>
-              <Header />
-            </DrawerProvider>
+
+        <AppWrapper>
+          <Sticky top={0} innerZ={9999} activeClass="sticky-active">
+            <Navbar />
           </Sticky>
-          
-          <ContentSectionWrapper>
-
-
+          <ContentWrapper>
             
-          </ContentSectionWrapper>
 
+
+
+
+          </ContentWrapper>
           <Footer />
-        </ContentWrapper>
-      </Fragment>
+        </AppWrapper>
+      </>
     </ThemeProvider>
   );
-};
+}

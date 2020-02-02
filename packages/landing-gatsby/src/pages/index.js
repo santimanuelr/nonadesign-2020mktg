@@ -1,47 +1,56 @@
-import React, { Fragment } from 'react';
-import Sticky from 'react-stickynode';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { rideTheme } from 'common/src/theme/ride';
+import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
-import { GlobalStyle, ContentWrapper } from '../containers/Ride/ride.style';
-import { DrawerProvider } from 'common/src/contexts/DrawerContext';
-import Navbar from '../containers/Ride/Navbar';
-import Header from '../containers/Ride/Header';
-import Banner from '../containers/Ride/Banner';
-import RideOption from '../containers/Ride/RideOption';
-import LocationSection from '../containers/Ride/LocationSelection';
-import FeatureSection from '../containers/Ride/Feature';
-import LatestNewsSection from '../containers/Ride/LatestNews';
-import HowItWorkSection from '../containers/Ride/HowItWorks';
-import TestimonialSection from '../containers/Ride/TestimonialSection';
-import FeatureSlider from '../containers/Ride/FeatureSlider';
-import Footer from '../containers/Ride/Footer';
+import Sticky from 'react-stickynode';
+import Navbar from '../containers/AppClassic/Navbar';
+import Banner from '../containers/AppClassic/Banner';
+import Customer from '../containers/AppClassic/Customer';
+import KeyFeatures from '../containers/AppClassic/KeyFeatures';
+import AppSlider from '../containers/AppClassic/AppSlider';
+import Features from '../containers/AppClassic/Features';
+import DesignedAndBuilt from '../containers/AppClassic/DesignedAndBuilt';
+import FeatureTab from '../containers/AppClassic/FeatureTab';
+import PricingPolicy from '../containers/AppClassic/PricingPolicy';
+import Testimonial from '../containers/AppClassic/Testimonial';
+import Faq from '../containers/AppClassic/Faq';
+import JoinTrail from '../containers/AppClassic/JoinTrail';
+import Footer from '../containers/AppClassic/Footer';
+import GlobalStyle, {
+  AppWrapper,
+  ContentWrapper,
+} from '../containers/AppClassic/appClassic.style';
+
 import SEO from '../components/seo';
 
-export default () => {
+export default function() {
   return (
-    <ThemeProvider theme={rideTheme}>
-      <Fragment>
-        <SEO title="Ride | A react next landing page" />
+    <ThemeProvider theme={theme}>
+      <>
+        <SEO title="App Classic" />
         <ResetCSS />
         <GlobalStyle />
-        <ContentWrapper>
-          <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
-            <DrawerProvider>
-              <Header />
-            </DrawerProvider>
+
+        <AppWrapper>
+          <Sticky top={0} innerZ={9999} activeClass="sticky-active">
+            <Navbar />
           </Sticky>
-          <Banner />
-          <RideOption />
-          <LocationSection />
-          <FeatureSlider />
-          <FeatureSection />
-          <LatestNewsSection />
-          <HowItWorkSection />
-          <TestimonialSection />
+          <ContentWrapper>
+            <Banner />
+            <Customer />
+            <KeyFeatures />
+            <AppSlider />
+            <Features />
+            <DesignedAndBuilt />
+            <FeatureTab />
+            <PricingPolicy />
+            <Testimonial />
+            <Faq />
+            <JoinTrail />
+          </ContentWrapper>
           <Footer />
-        </ContentWrapper>
-      </Fragment>
+        </AppWrapper>
+      </>
     </ThemeProvider>
   );
-};
+}

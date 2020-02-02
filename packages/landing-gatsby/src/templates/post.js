@@ -1,36 +1,38 @@
-import React, { Fragment } from 'react';
-import Sticky from 'react-stickynode';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { rideTheme } from 'common/src/theme/ride';
+import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
-import { GlobalStyle, ContentWrapper } from '../containers/Ride/ride.style';
-import { DrawerProvider } from 'common/src/contexts/DrawerContext';
-import Header from '../containers/Ride/Header';
-import Footer from '../containers/Ride/Footer';
-import SEO from '../components/seo';
+import Sticky from 'react-stickynode';
+import Navbar from '../containers/AppClassic/Navbar';
+import Footer from '../containers/AppClassic/Footer';
+import GlobalStyle, {
+  AppWrapper,
+  ContentWrapper,
+} from '../containers/AppClassic/appClassic.style';
 
-import ContentSectionWrapper from '../containers/Ride/ContentSectionWrapper';
+import SEO from '../components/seo';
 
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 export default ({ data }) => {
   return (
-    <ThemeProvider theme={rideTheme}>
-      <Fragment>
+    <ThemeProvider theme={theme}>
+      <>
         <SEO
           title={data.wordpressPost.title}
           description={data.wordpressPost.excerpt}
         />
         <ResetCSS />
         <GlobalStyle />
-        <ContentWrapper>
-          <Sticky top={0} innerZ={9999} activeClass="sticky-nav-active">
-            <DrawerProvider>
-              <Header />
-            </DrawerProvider>
+
+        <AppWrapper>
+          <Sticky top={0} innerZ={9999} activeClass="sticky-active">
+            <Navbar />
           </Sticky>
-          <ContentSectionWrapper>
+          <ContentWrapper>
+
+
             <h1> {data.wordpressPost.title} </h1>
             <p>
               Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
@@ -40,13 +42,15 @@ export default ({ data }) => {
               style={{ marginTop: 20 }}
               dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
             />
-          </ContentSectionWrapper>
+
+
+          </ContentWrapper>
           <Footer />
-        </ContentWrapper>
-      </Fragment>
+        </AppWrapper>
+      </>
     </ThemeProvider>
   );
-};
+}
 
 export const query = graphql`
   query($id: Int!) {
