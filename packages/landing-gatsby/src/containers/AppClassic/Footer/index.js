@@ -47,16 +47,6 @@ const Footer = () => {
   return (
     <FooterArea>
       <Container>
-        <WidgetArea>
-          {widgets.map(item => (
-            <Box className="col" key={`footer-widget--key${item.id}`}>
-              <Image src={item.icon.publicURL} alt={item.title} />
-              <Heading as="h3" content={item.title} />
-              <Text content={item.description} />
-            </Box>
-          ))}
-        </WidgetArea>
-        {/* End of footer widgets area */}
         <MenuArea>
           <Logo
             className="logo"

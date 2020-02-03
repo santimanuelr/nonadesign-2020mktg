@@ -18,28 +18,10 @@ const SectionWrapper = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin-top: 20px;
   align-items: top;
-  .image {
-    width: calc(100% - 60%);
-    max-height: 400px;
-    @media only screen and (max-width: 991px) {
-      width: calc(100% - 75%);
-    }
-    @media only screen and (max-width: 768px) {
-      width: 100%;
-      margin-bottom: 40px;
-    }
-  }
   .content {
-    width: 60%;
+    width: 100%;
     padding-left: 50px;
-    @media only screen and (max-width: 991px) {
-      width: 75%;
-    }
-    @media only screen and (max-width: 768px) {
-      width: 100%;
-    }
     h2 {
       color: ${themeGet('colors.headingColor', '#0F2137')};
       font-size: 36px;
@@ -82,12 +64,6 @@ export const ContentWrapper = styled.div`
       @media only screen and (max-width: 768px) {
         text-align: center;
       }
-    }
-  }
-  .reusecore__button {
-    border-radius: 5px;
-    &:hover {
-      background-color: ${themeGet('colors.primaryHover', '#3C74FF')};
     }
   }
 `;

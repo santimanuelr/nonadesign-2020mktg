@@ -7,16 +7,9 @@ import Navbar from '../containers/AppClassic/Navbar';
 import Banner from '../containers/Custom/Banner';
 import About from '../containers/Custom/About';
 import Teaser from '../containers/Custom/Teaser';
-import Customer from '../containers/AppClassic/Customer';
-import KeyFeatures from '../containers/AppClassic/KeyFeatures';
-import AppSlider from '../containers/AppClassic/AppSlider';
-import Features from '../containers/AppClassic/Features';
-import DesignedAndBuilt from '../containers/AppClassic/DesignedAndBuilt';
-import FeatureTab from '../containers/AppClassic/FeatureTab';
-import PricingPolicy from '../containers/AppClassic/PricingPolicy';
+import Wysiwyg from '../containers/Custom/Wysiwyg';
 import Testimonial from '../containers/AppClassic/Testimonial';
 import Faq from '../containers/AppClassic/Faq';
-import JoinTrail from '../containers/AppClassic/JoinTrail';
 import Footer from '../containers/AppClassic/Footer';
 import GlobalStyle, {
   AppWrapper,
@@ -44,17 +37,11 @@ export default function ({data}) {
           <ContentWrapper>
             <Banner inputdata={page.acf} />
             <About inputdata={page.acf} />
-            <Teaser inputdata={page.acf} />
-            <Customer />
-            <KeyFeatures />
-            <AppSlider />
-            <Features />
-            <DesignedAndBuilt />
-            <FeatureTab />
-            <PricingPolicy />
-            <Testimonial />
+            <Teaser image={page.acf.teaser_image_1} content={page.acf.teaser_content_1} />
+            <Teaser image={page.acf.teaser_image_2} content={page.acf.teaser_content_2} />
+            <Wysiwyg content={page.acf.full_wysisyg_section_1}/>
+            <Wysiwyg content={page.acf.full_wysisyg_section_2} />
             <Faq />
-            <JoinTrail />
           </ContentWrapper>
           <Footer />
         </AppWrapper>
@@ -77,9 +64,7 @@ export const query = graphql`
         about_parameter2_value
         banner_subtitle
         banner_title
-        teaser_footer
-        teaser_header
-        teaser_image {
+        teaser_image_1 {
           localFile {
             childImageSharp {
               fluid {
@@ -88,8 +73,20 @@ export const query = graphql`
             }
           }
         }
-        teaser_subtitle
-        teaser_title
+        teaser_content_1
+        teaser_image_2 {
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+        teaser_content_2
+        full_wysisyg_section_1
+        full_wysisyg_section_2
+        full_wysisyg_section_3
       }
     }
   }

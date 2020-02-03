@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { themeGet } from 'styled-system';
 
 const BannerWrapper = styled.div`
-  padding-top: 100px;
-  min-height: 802px;
+  padding-top: 60px;
+  min-height: 752px;
   background-color: #f3effd;
   overflow: hidden;
   @media only screen and (min-width: 1201px) and (max-width: 1440px) {

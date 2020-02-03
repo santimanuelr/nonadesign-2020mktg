@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { themeGet } from 'styled-system';
 
 const AboutWrapper = styled.div`
-  padding-top: 100px;
+  padding-top: 30px;
   min-height: 200px;
   background-color: ${themeGet('colors.light', '#FAFBFF')};
   overflow: hidden;
