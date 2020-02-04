@@ -42,7 +42,7 @@ export default function ({data}) {
             <Wysiwyg content={page.acf.full_wysisyg_section_2} />
             <Faq />
           </ContentWrapper>
-          <Footer />
+          <Footer inputdata={page.acf}  />
         </AppWrapper>
       </>
     </ThemeProvider>
@@ -86,6 +86,9 @@ export const query = graphql`
         full_wysisyg_section_1
         full_wysisyg_section_2
         full_wysisyg_section_3
+        footer_title
+        footer_email
+        copyright_text
       }
     }
   }

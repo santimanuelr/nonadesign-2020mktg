@@ -14,7 +14,7 @@ import FooterArea, {
   CopyrightText,
 } from './footer.style';
 
-const Footer = () => {
+const Footer = ({inputdata}) => {
   const data = useStaticQuery(graphql`
     query {
       appClassicJson {
@@ -22,27 +22,18 @@ const Footer = () => {
           logo {
             publicURL
           }
-          menu {
-            id
-            link
-            text
-          }
-          widgets {
-            id
-            icon {
-              publicURL
-            }
-            title
-            description
-          }
+        }
+      }
+      wordpressWpApiMenusMenusItems(name: { eq: "Slide Menu" }) {
+        items {
+          wordpress_id
+          title
+          url
         }
       }
     }
   `);
-  const { logo, menu, widgets } = data.appClassicJson.footer;
-
-  const date = new Date();
-  const year = date.getFullYear();
+  const { logo } = data.appClassicJson.footer;
 
   return (
     <FooterArea>
@@ -54,16 +45,16 @@ const Footer = () => {
             logoSrc={logo.publicURL}
             title="App Classic"
           />
-		  <Heading as="h1" content="Let's Clay" />
-		  <Text content="hey@clay.global" />
+		  <Heading as="h1" content={inputdata.footer_title} />
+		  <Text content={inputdata.footer_email} />
           <Menu>
-            {menu.map(item => (
-              <MenuItem key={`footer-link${item.id}`}>
-                <a href={item.link}>{item.text}</a>
+            {data.wordpressWpApiMenusMenusItems.items.map(item => (
+              <MenuItem key={`footer-link${item.wordpress_id}`}>
+                <a href={item.url}>{item.title}</a>
               </MenuItem>
             ))}
           </Menu>
-          <CopyrightText>Copyright {year} By RedQ Inc</CopyrightText>
+          <CopyrightText>{inputdata.copyright_text}</CopyrightText>
         </MenuArea>
         {/* End of footer menu area */}
       </Container>
