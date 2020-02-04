@@ -15,42 +15,41 @@ import {
   OpenIcon,
   CloseIcon,
 } from 'common/src/components/Accordion';
-import { SectionHeader } from '../appClassic.style';
+import { SectionHeader } from '../Custom.style';
 import FaqSection from './faq.style';
 
-const Faq = () => {
+const Faq = ({inputdata}) => {
   const data = useStaticQuery(graphql`
     query {
-      appClassicJson {
-        faq {
-          slogan
-          title
-          faqs {
-            id
-            question
-            answer
+      allWordpressWpFaq {
+        edges {
+          node {
+            wordpress_id
+            title
+            content
           }
         }
       }
     }
   `);
-  const { slogan, title, faqs } = data.appClassicJson.faq;
+
+  const FAQs = data.allWordpressWpFaq.edges;
 
   return (
     <FaqSection id="faq">
       <Container>
         <SectionHeader>
-          <Heading as="h5" content={slogan} />
-          <Heading content={title} />
+          <Heading as="h5" content={inputdata.faq_section_subtitle} />
+          <Heading content={inputdata.faq_section_title} />
         </SectionHeader>
         <Accordion>
           <Fragment>
-            {faqs.map(item => (
-              <AccordionItem key={`accordion-key--${item.id}`}>
+            {FAQs.map(item => (
+              <AccordionItem key={`accordion-key--${item.node.wordpress_id}`}>
                 <Fragment>
                   <AccordionTitle>
                     <Fragment>
-                      <Heading as="h3" content={item.question} />
+                      <Heading as="h3" dangerouslySetInnerHTML={{ __html: item.node.title }} />
                       <IconWrapper className="icon-wrapper">
                         <OpenIcon>
                           <Icon icon={minusCircled} size={18} />
@@ -62,7 +61,7 @@ const Faq = () => {
                     </Fragment>
                   </AccordionTitle>
                   <AccordionBody>
-                    <Text content={item.answer} />
+                    <Text dangerouslySetInnerHTML={{ __html: item.node.content }} />
                   </AccordionBody>
                 </Fragment>
               </AccordionItem>

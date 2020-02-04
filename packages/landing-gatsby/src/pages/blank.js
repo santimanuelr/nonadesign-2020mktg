@@ -3,12 +3,13 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
 import Sticky from 'react-stickynode';
-import Navbar from '../containers/AppClassic/Navbar';
-import Footer from '../containers/AppClassic/Footer';
+import Navbar from '../containers/Custom/Navbar';
+import Footer from '../containers/Custom/Footer';
 import GlobalStyle, {
   AppWrapper,
   ContentWrapper,
-} from '../containers/AppClassic/appClassic.style';
+} from '../containers/Custom/Custom.style';
+
 
 import SEO from '../components/seo';
 
@@ -16,7 +17,7 @@ export default function() {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <SEO title="App Classic" />
+        <SEO title="2020mktg" />
         <ResetCSS />
         <GlobalStyle />
 

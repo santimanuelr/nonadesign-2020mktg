@@ -14,7 +14,7 @@ import FooterArea, {
   CopyrightText,
 } from './footer.style';
 
-const Footer = ({inputdata}) => {
+const Footer = () => {
   const data = useStaticQuery(graphql`
     query {
       appClassicJson {
@@ -45,8 +45,8 @@ const Footer = ({inputdata}) => {
             logoSrc={logo.publicURL}
             title="App Classic"
           />
-		  <Heading as="h1" content={inputdata.footer_title} />
-		  <Text content={inputdata.footer_email} />
+		  <Heading as="h1" content="Let's Clay" />
+		  <Text content="hey@clay.global" />
           <Menu>
             {data.wordpressWpApiMenusMenusItems.items.map(item => (
               <MenuItem key={`footer-link${item.wordpress_id}`}>
@@ -54,7 +54,7 @@ const Footer = ({inputdata}) => {
               </MenuItem>
             ))}
           </Menu>
-          <CopyrightText>{inputdata.copyright_text}</CopyrightText>
+          <CopyrightText>Copyright 2020 by 2020mktg</CopyrightText>
         </MenuArea>
         {/* End of footer menu area */}
       </Container>

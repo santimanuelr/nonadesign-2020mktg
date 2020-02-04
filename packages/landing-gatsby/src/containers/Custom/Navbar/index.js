@@ -21,17 +21,29 @@ const Navbar = () => {
           logo {
             publicURL
           }
-          navMenu {
-            id
-            label
-            path
-            offset
-          }
+        }
+      }
+      wordpressWpApiMenusMenusItems(name: { eq: "Slide Menu" }) {
+        items {
+          title
+          url
         }
       }
     }
   `);
-  const { logo, navMenu } = data.appClassicJson.navbar;
+  const { logo } = data.appClassicJson.navbar;
+
+  let navMenuData = [];
+  for (var i = 0; i < data.wordpressWpApiMenusMenusItems.items.length; i++) {
+    navMenuData[navMenuData.length] = {
+      "id": (i + 1),
+      "label": data.wordpressWpApiMenusMenusItems.items[i].title,
+      "path": data.wordpressWpApiMenusMenusItems.items[i].url,
+      "offset": "84",
+      "staticLink": true
+    };
+  }
+  console.log(navMenuData);
 
   const [state, setState] = useState({
     search: '',
@@ -89,14 +101,14 @@ const Navbar = () => {
       <Container>
         <Logo
           className="logo"
-          href="/appclassic"
+          href="/"
           logoSrc={logo.publicURL}
           title="App Classic"
         />
         {/* end of logo */}
 
         <MenuArea className={state.searchToggle ? 'active' : ''}>
-          <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} />
+          <ScrollSpyMenu className="menu" menuItems={navMenuData} offset={-84} />
           {/* end of main menu */}
 
           <Search className="search" ref={searchRef}>
@@ -127,10 +139,10 @@ const Navbar = () => {
               state.mobileMenu ? (
                 <Icon className="bar" icon={x} />
               ) : (
-                <Fade>
-                  <Icon className="close" icon={menu} />
-                </Fade>
-              )
+                  <Fade>
+                    <Icon className="close" icon={menu} />
+                  </Fade>
+                )
             }
             color="#0F2137"
             variant="textButton"
@@ -142,7 +154,7 @@ const Navbar = () => {
       {/* start mobile menu */}
       <MobileMenu className={`mobile-menu ${state.mobileMenu ? 'active' : ''}`}>
         <Container>
-          <ScrollSpyMenu className="menu" menuItems={navMenu} offset={-84} />
+          <ScrollSpyMenu className="menu" menuItems={navMenuData} offset={-84} />
           <Button title="Try for Free" />
         </Container>
       </MobileMenu>

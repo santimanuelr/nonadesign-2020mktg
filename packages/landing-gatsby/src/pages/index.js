@@ -3,17 +3,17 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
 import Sticky from 'react-stickynode';
-import Navbar from '../containers/AppClassic/Navbar';
-import Banner from '../containers/Custom/Banner';
+import Navbar from '../containers/Custom/Navbar';
+import HomeBanner from '../containers/Custom/HomeBanner';
 import About from '../containers/Custom/About';
 import Teaser from '../containers/Custom/Teaser';
 import Wysiwyg from '../containers/Custom/Wysiwyg';
-import Faq from '../containers/AppClassic/Faq';
+import Faq from '../containers/Custom/Faq';
 import Footer from '../containers/Custom/Footer';
 import GlobalStyle, {
   AppWrapper,
   ContentWrapper,
-} from '../containers/AppClassic/appClassic.style';
+} from '../containers/Custom/Custom.style';
 
 import SEO from '../components/seo';
 
@@ -25,7 +25,7 @@ export default function ({data}) {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <SEO title="App Classic" />
+        <SEO title="2020mktg" />
         <ResetCSS />
         <GlobalStyle />
 
@@ -34,15 +34,15 @@ export default function ({data}) {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-            <Banner inputdata={page.acf} />
+            <HomeBanner inputdata={page.acf} />
             <About inputdata={page.acf} />
             <Teaser image={page.acf.teaser_image_1} content={page.acf.teaser_content_1} />
             <Teaser image={page.acf.teaser_image_2} content={page.acf.teaser_content_2} />
             <Wysiwyg content={page.acf.full_wysisyg_section_1}/>
             <Wysiwyg content={page.acf.full_wysisyg_section_2} />
-            <Faq />
+            <Faq inputdata={page.acf} />
           </ContentWrapper>
-          <Footer inputdata={page.acf}  />
+          <Footer />
         </AppWrapper>
       </>
     </ThemeProvider>
@@ -86,6 +86,8 @@ export const query = graphql`
         full_wysisyg_section_1
         full_wysisyg_section_2
         full_wysisyg_section_3
+        faq_section_title
+        faq_section_subtitle
         footer_title
         footer_email
         copyright_text

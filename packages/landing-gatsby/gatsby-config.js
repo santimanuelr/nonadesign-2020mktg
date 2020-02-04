@@ -115,6 +115,7 @@ module.exports = {
           "**/taxonomies",
           "**/*/*/menus", // <== Menu api endpoint
           "**/*/*/menu-locations", // <== Menu api endpoint
+          "**/faq",
         ],
         excludedRoutes: [],
         normalizer: function({ entities }) {
