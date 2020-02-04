@@ -61,7 +61,7 @@ const Faq = ({inputdata}) => {
                     </Fragment>
                   </AccordionTitle>
                   <AccordionBody>
-                    <Text dangerouslySetInnerHTML={{ __html: item.node.content }} />
+                    <Text content={item.node.content} />
                   </AccordionBody>
                 </Fragment>
               </AccordionItem>
