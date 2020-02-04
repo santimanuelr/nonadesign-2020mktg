@@ -8,9 +8,8 @@ import Banner from '../containers/Custom/Banner';
 import About from '../containers/Custom/About';
 import Teaser from '../containers/Custom/Teaser';
 import Wysiwyg from '../containers/Custom/Wysiwyg';
-import Testimonial from '../containers/AppClassic/Testimonial';
 import Faq from '../containers/AppClassic/Faq';
-import Footer from '../containers/AppClassic/Footer';
+import Footer from '../containers/Custom/Footer';
 import GlobalStyle, {
   AppWrapper,
   ContentWrapper,
