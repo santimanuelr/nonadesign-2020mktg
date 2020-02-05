@@ -43,7 +43,7 @@ const Navbar = () => {
       "staticLink": true
     };
   }
-  console.log(navMenuData);
+  //console.log(navMenuData);
 
   const [state, setState] = useState({
     search: '',

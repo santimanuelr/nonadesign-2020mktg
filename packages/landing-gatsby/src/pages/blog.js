@@ -5,6 +5,7 @@ import { ResetCSS } from 'common/src/assets/css/style';
 import Sticky from 'react-stickynode';
 import Navbar from '../containers/Custom/Navbar';
 import Banner from '../containers/Custom/Banner';
+import BlogCard from '../containers/Custom/BlogCard';
 import Footer from '../containers/Custom/Footer';
 import GlobalStyle, {
   AppWrapper,
@@ -20,8 +21,9 @@ export default ({ data }) => {
   return (
     <ThemeProvider theme={theme}>
       <>
-        <SEO title="title"
-          description="description"
+        <SEO
+          title="Blog"
+          description="A technology, design, and marketing blog."
         />
         <ResetCSS />
         <GlobalStyle />
@@ -32,8 +34,9 @@ export default ({ data }) => {
           </Sticky>
           <ContentWrapper>
             <Container>
-              <Banner heading="header" subheading="subheader" />
+              <Banner heading="Blog" subheading="A technology, design, and marketing blog." />
               
+              <BlogCard />
             </Container>
           </ContentWrapper>
           <Footer />

@@ -4,6 +4,7 @@ import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
 import Sticky from 'react-stickynode';
 import Navbar from '../containers/Custom/Navbar';
+import Banner from '../containers/Custom/Banner';
 import Footer from '../containers/Custom/Footer';
 import GlobalStyle, {
   AppWrapper,
@@ -12,10 +13,6 @@ import GlobalStyle, {
 
 import SEO from '../components/seo';
 import Container from 'common/src/components/UI/Container';
-import PageSectionWrapper, {
-  PageSectionContent,
-  PageSectionImage,
-} from '../containers/Custom/PageSection/pagesection.style';
 
 import { graphql } from "gatsby"
 
@@ -35,14 +32,10 @@ export default ({ data }) => {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-            <PageSectionWrapper id="home">
-              <Container>
-                <PageSectionContent>
-                  <h1>{data.wordpressPage.title}</h1>
-                  <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.content }} />
-                </PageSectionContent>
-              </Container>
-            </PageSectionWrapper>
+            <Container>
+              <Banner heading={data.wordpressPage.title} />
+              <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.content }} />
+            </Container>
           </ContentWrapper>
           <Footer />
         </AppWrapper>

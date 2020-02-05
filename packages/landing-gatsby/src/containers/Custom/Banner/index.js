@@ -12,19 +12,19 @@ import BannerWrapper, {
   BannerImage,
 } from './banner.style';
 
-const Banner = ({inputdata}) => {
+const Banner = ({heading, subheading}) => {
   return (
     <BannerWrapper id="home">
       <Container>
         <BannerContent>
-          <Fade up delay={100}>
+        <Fade up delay={100}>
             <Heading as="h1"
-              content={inputdata.banner_title}
+              content={heading}
             />
           </Fade>
-          <Fade up delay={200}>
-            <Text
-              content={inputdata.banner_subtitle}
+          <Fade up delay={150}>
+            <Heading as="h2"
+              content={subheading}
             />
           </Fade>
         </BannerContent>
