@@ -31,7 +31,7 @@ const BlogCard = ({ slug, title, text, date, image }) => {
               <Heading dangerouslySetInnerHTML={setHTML(title)} />
             </Link>
             <Text content={date} />
-            <Text dangerouslySetInnerHTML={{ __html: `<div> ${text} </div>` }} />
+            <div dangerouslySetInnerHTML={{ __html: text }} />
           </Fade>
         </TextWrapper>
       </Container>

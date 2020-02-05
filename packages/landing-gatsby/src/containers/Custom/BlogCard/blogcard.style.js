@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { themeGet } from 'styled-system';
 
 const SectionWrapper = styled.div`
   padding: 81px 0;
@@ -56,6 +57,7 @@ export const TextWrapper = styled.div`
   }
 
   h2 {
+    color: ${themeGet('colors.menu', '#0D233E')};
     @media only screen and (min-width: 1441px) {
       margin-bottom: 40px;
     }
