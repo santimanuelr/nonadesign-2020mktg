@@ -34,8 +34,9 @@ export default ({ data }) => {
           </Sticky>
           <ContentWrapper>
             <Container>
-              <Banner heading="Blog" subheading="A technology, design, and marketing blog." />
-              
+              <Banner heading="Blog" subheading="A technology, design, and marketing blog." />              
+              <BlogCard />
+              <BlogCard />
               <BlogCard />
             </Container>
           </ContentWrapper>
