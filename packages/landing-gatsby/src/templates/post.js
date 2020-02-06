@@ -12,10 +12,6 @@ import GlobalStyle, {
 
 import SEO from '../components/seo';
 import Container from 'common/src/components/UI/Container';
-import PageSectionWrapper, {
-  PageSectionContent,
-  PageSectionImage,
-} from '../containers/Custom/PageSection/pagesection.style';
 
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -36,21 +32,17 @@ export default ({ data }) => {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-            <PageSectionWrapper id="home">
+            <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} objectPosition="50% 50%" alt={data.wordpressPost.title} style={{ maxHeight: 450 }} />
               <Container>
-                <PageSectionContent>
                   <h1> {data.wordpressPost.title} </h1>
                   <p>
                     Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
                   </p>
-                  <Img sizes={data.wordpressPost.featured_media.localFile.childImageSharp.sizes} alt={data.wordpressPost.title} style={{ maxHeight: 450 }} />
                   <div
                     style={{ marginTop: 20 }}
                     dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
                   />
-                </PageSectionContent>
               </Container>
-            </PageSectionWrapper>
           </ContentWrapper>
 
 
@@ -72,8 +64,8 @@ export const query = graphql`
       featured_media {
         localFile {
           childImageSharp {
-            sizes(maxWidth: 1200) {
-              src
+            fluid(duotone: { highlight: "#dddddd", shadow: "#192550" }, toFormat: PNG) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
