@@ -62,7 +62,7 @@ query blogQuery {
           featured_media {
             localFile {
               childImageSharp {
-                fluid {
+                fluid(maxWidth: 416) {
                   src
                 }
               }
