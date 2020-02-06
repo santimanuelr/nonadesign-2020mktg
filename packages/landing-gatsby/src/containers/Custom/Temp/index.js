@@ -6,8 +6,10 @@ import Fade from 'react-reveal/Fade';
 import Box from 'reusecore/src/elements/Box';
 import Text from 'reusecore/src/elements/Text';
 import Heading from 'reusecore/src/elements/Heading';
+import Button from 'reusecore/src/elements/Button';
 import Container from 'common/src/components/UI/Container';
-import { BannerWrapper, DiscountWrapper, DiscountLabel } from './homebanner.style';
+import { BannerWrapper, DiscountWrapper, DiscountLabel } from './banner.style';
+import { ic_play_circle_filled } from 'react-icons-kit/md/ic_play_circle_filled';
 
 const BannerSection = ({
   inputdata,	

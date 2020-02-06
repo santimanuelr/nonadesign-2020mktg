@@ -39,11 +39,20 @@ export default ({ data }) => {
             <PageSectionWrapper id="home">
               <Container>
                 <PageSectionContent>
+                  <Img
+                    fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid}
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      top: 0,
+                      width: "100%",
+                      height: "100%"
+                    }}
+                  />
                   <h1> {data.wordpressPost.title} </h1>
                   <p>
                     Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
                   </p>
-                  <Img sizes={data.wordpressPost.featured_media.localFile.childImageSharp.sizes} alt={data.wordpressPost.title} style={{ maxHeight: 450 }} />
                   <div
                     style={{ marginTop: 20 }}
                     dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
@@ -72,7 +81,8 @@ export const query = graphql`
       featured_media {
         localFile {
           childImageSharp {
-            sizes(maxWidth: 1200) {
+            fluid {
+              sizes
               src
             }
           }

@@ -3,7 +3,7 @@ import { themeGet } from 'styled-system';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Graphic-web', Helvetica, sans-serif;
   }
   h1,
   h2,
@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
   h4,
   h5,
   h6 {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Graphic-web', Helvetica, sans-serif;
   }
   section {
     position: relative;
