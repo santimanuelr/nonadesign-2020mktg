@@ -1,135 +1,211 @@
 import React from 'react';
-import Image from 'gatsby-image';
 import PropTypes from 'prop-types';
-import Icon from 'react-icons-kit';
+import { useStaticQuery, graphql } from 'gatsby';
 import Fade from 'react-reveal/Fade';
 import Box from 'reusecore/src/elements/Box';
 import Text from 'reusecore/src/elements/Text';
 import Heading from 'reusecore/src/elements/Heading';
-import Button from 'reusecore/src/elements/Button';
+import Image from 'reusecore/src/elements/Image';
 import Container from 'common/src/components/UI/Container';
-import { BannerWrapper, DiscountWrapper, DiscountLabel } from './banner.style';
-import { ic_play_circle_filled } from 'react-icons-kit/md/ic_play_circle_filled';
+import FeatureBlock from 'common/src/components/FeatureBlock';
 
-const BannerSection = ({
+const ServicesSection = ({
   inputdata,	
+  sectionWrapper,
   row,
-  contentWrapper,
-  title,
-  description,
-  imageWrapper,
-  buttonWrapper,
-  button,
-  fillButton,
+  col,
+  col2,
+  secTitleWrapper,
+  secHeading,
+  secText,
+  featureItemHeading,
+  featureItemDes,
+  paramItemHeading,
+  paramItemDes,
+  featureBlockStyle,
+  iconStyle,
+  contentStyle,
+  contentParamStyle,
 }) => {
+  
   return (
-    <BannerWrapper id="banner_section">
+    <Box {...sectionWrapper}>
       <Container>
-        <Box {...row}>
-          <Box {...contentWrapper}>
-		    <Fade up delay={100}>
-            <Heading
-              {...title}
-              content={inputdata.banner_title}
-            />
-			</Fade>
-			<Fade up delay={100}>
-            <Text
-              {...description}
-              content={inputdata.banner_subtitle}
-            />
-			</Fade>
+        <>
+          <Box {...row}>            
+              <Box {...col2}>
+			    <Fade up delay={100}>
+                <FeatureBlock
+                  wrapperStyle={featureBlockStyle}
+                  iconStyle={iconStyle}
+                  contentStyle={contentStyle}
+                  title={
+                    <Heading
+					  {...featureItemHeading}
+                      content={inputdata.about_heading}
+                    />
+                  }
+                />
+				</Fade>
+				
+				<Fade up delay={200}>
+                <FeatureBlock
+                  wrapperStyle={featureBlockStyle}
+                  iconStyle={iconStyle}
+                  contentStyle={contentStyle}
+                  description={
+                    <Text
+					  {...featureItemDes}
+                      content={inputdata.about_link_title}
+                    />
+                  }
+                />
+				</Fade>
+              </Box>
+              <Box {...col}>
+			    <Fade up delay={100}>
+				<FeatureBlock
+				  wrapperStyle={featureBlockStyle}
+				  iconStyle={iconStyle}
+				  contentStyle={contentParamStyle}
+				  title={
+					<Text {...paramItemHeading} content={inputdata.about_parameter1_value} />
+				  }
+				  description={
+					<Text {...paramItemDes} content={inputdata.about_parameter1_name} />
+				  }
+				/>
+				</Fade>
+
+				<Fade up delay={200}>
+				<FeatureBlock
+				  wrapperStyle={featureBlockStyle}
+				  iconStyle={iconStyle}
+				  contentStyle={contentParamStyle}
+				  title={
+					<Text {...paramItemHeading} content={inputdata.about_parameter2_value} />
+				  }
+				  description={
+					<Text {...paramItemDes} content={inputdata.about_parameter2_name} />
+				  }
+				/>
+				</Fade>
+              </Box>
+            
           </Box>
-        </Box>
+        </>
       </Container>
-    </BannerWrapper>
+    </Box>
   );
 };
 
-BannerSection.propTypes = {
+ServicesSection.propTypes = {
+  sectionWrapper: PropTypes.object,
+  secTitleWrapper: PropTypes.object,
   row: PropTypes.object,
-  contentWrapper: PropTypes.object,
-  discountAmount: PropTypes.object,
-  discountText: PropTypes.object,
-  title: PropTypes.object,
-  description: PropTypes.object,
-  imageWrapper: PropTypes.object,
-  buttonWrapper: PropTypes.object,
-  button: PropTypes.object,
-  fillButton: PropTypes.object,
+  col: PropTypes.object,
+  secHeading: PropTypes.object,
+  secText: PropTypes.object,
+  featureItemHeading: PropTypes.object,
+  featureItemDes: PropTypes.object,
+  paramItemHeading: PropTypes.object,
+  paramItemDes: PropTypes.object,
+  featureBlockStyle: PropTypes.object,
+  iconStyle: PropTypes.object,
+  contentStyle: PropTypes.object,
 };
 
-BannerSection.defaultProps = {
+ServicesSection.defaultProps = {
+  sectionWrapper: {
+    as: 'section',
+    id: 'service_section',
+    className: 'service_section',
+    pt: ['60px', '80px', '80px', '80px'],
+    pb: ['60px', '80px', '80px', '80px'],
+    pl: ['5px', '15px', '30px', '125px'],
+    pr: ['5px', '15px', '30px', '125px'],
+  },
+  secTitleWrapper: {
+    mb: ['50px', '60px', '60px', '75px'],
+  },
+  secText: {
+    as: 'span',
+    display: 'block',
+    textAlign: 'center',
+    fontSize: '14px',
+    letterSpacing: '0.15em',
+    fontWeight: '700',
+    color: '#eb4d4b',
+    mb: '10px',
+  },
+  secHeading: {
+    textAlign: 'center',
+    fontSize: ['20px', '24px'],
+    fontWeight: '400',
+    color: '#0f2137',
+    letterSpacing: '-0.025em',
+    mb: '0',
+  },
   row: {
     flexBox: true,
     flexWrap: 'wrap',
-    alignItems: 'left',
+  },
+  col: {
+    width: [1, 1 / 2, 1 / 2, 1 / 3],
+    className: 'service_col',
+    bg: '#fff',
+  },
+  col2: {
+    width: [1, 1 / 2, 1 / 2, 2 / 3],
+    className: 'service_2col',
+    bg: '#fff',
+  },
+  featureBlockStyle: {
+    p: '45px 55px',
+    className: 'service_item',
+  },
+  iconStyle: {
+    textAlign: 'center',
+    display: 'flex',
     justifyContent: 'center',
+    mb: '45px',
   },
-  contentWrapper: {
-    width: '100%',
-    mb: '40px',
-  },
-  imageWrapper: {
-    width: '100%',
-  },
-  title: {
-    fontSize: '40px',
-    fontWeight: '500',
-    letterSpacing: '-1.33px',
-	lineHeight: '50px',
-    mb: ['20px', '25px', '25px', '25px', '25px'],
-    lineHeight: '1.2',
+  contentStyle: {
     textAlign: 'left',
   },
-  description: {
-    fontSize: ['15px', '16px', '16px', '16px', '16px'],
-    lineHeight: '1.75',
+  contentParamStyle: {
+    textAlign: 'center',
+  },
+  featureItemHeading: {
+    fontSize: ['30px'],
+    fontWeight: '400',
+    color: '#0f2137',
+    lineHeight: '45px',
+    mb: '20px',
+    letterSpacing: '-1.15px',
+  },
+  featureItemDes: {
+    fontSize: '24px',
+    lineHeight: '32px',
+    letterSpacing: '-0.15px',
+    color: '#343d48cc',
     mb: '0',
-    textAlign: 'left',
   },
-  discountAmount: {
-    fontSize: ['13px', '14px', '14px', '14px', '14px'],
-    fontWeight: '700',
-    color: '#00865b',
-    mb: 0,
-    as: 'span',
-    mr: '0.4em',
+  paramItemHeading: {
+    fontSize: '72px',
+    fontWeight: '900',
+    color: '#0f2137',
+    lineHeight: '1',
+    letterSpacing: '-0.03430556em',
   },
-  discountText: {
-    fontSize: ['13px', '14px', '14px', '14px', '14px'],
-    fontWeight: '700',
-    color: '#fff',
-    mb: 0,
-    as: 'span',
-  },
-  fillButton: {
-    type: 'button',
-    fontSize: ['13px', '14px'],
-    fontWeight: '600',
-    borderRadius: '4px',
-    p: ['0px 15px', '8px 22px'],
-    colors: 'secondaryWithBg',
-    minWidth: ['auto', '150px'],
-    height: ['40px', '46px'],
-    minHeight: 'auto',
-  },
-  buttonWrapper: {
-    flexBox: true,
-    justifyContent: 'center',
-    mt: '35px',
-  },
-  button: {
-    type: 'button',
-    fontSize: ['13px', '14px'],
-    fontWeight: '600',
-    borderRadius: '4px',
-    p: ['0px 15px', '8px 22px'],
-    color: '#fff',
-    colors: 'secondary',
-    height: ['40px', '46px'],
-    minHeight: 'auto',
+  paramItemDes: {
+    fontSize: '20px',
+    lineHeight: '30px',
+    letterSpacing: '-0.87px',
+    color: '#343d48cc',
+    marginTop: '5px',
+	marginBottom: '-20px',
   },
 };
 
-export default BannerSection;
+export default ServicesSection;
