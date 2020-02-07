@@ -32,11 +32,11 @@ export default ({ data }) => {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-            <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} objectPosition="50% 50%" alt={data.wordpressPost.title} style={{ maxHeight: 450 }} />
+            <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} object-fit="cover" objectPosition="50% 50%" alt={data.wordpressPost.title} style={{ height: "450px", opacity: "0.2" }} />
+            <h1 style={{ width: "100%", textAlign: "center", position: "absolute", top: "50%"}} dangerouslySetInnerHTML={{ __html: data.wordpressPost.title }} /> 
               <Container>
-                  <h1> {data.wordpressPost.title} </h1>
-                  <p>
-                    Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
+                  <p style={{ fontWeight: "bold", fontSize: "12px" }}>
+                    {data.wordpressPost.date}
                   </p>
                   <div
                     style={{ marginTop: 20 }}
@@ -64,7 +64,7 @@ export const query = graphql`
       featured_media {
         localFile {
           childImageSharp {
-            fluid(duotone: { highlight: "#dddddd", shadow: "#192550" }, toFormat: PNG) {
+            fluid {
               ...GatsbyImageSharpFluid
             }
           }
