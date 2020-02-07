@@ -32,8 +32,10 @@ export default ({ data }) => {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-            <Container>
+            <Container fullWidth="true" noGutter="true">
               <Banner heading={data.wordpressPage.title} />
+            </Container>
+            <Container>
               <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.content }} />
             </Container>
           </ContentWrapper>

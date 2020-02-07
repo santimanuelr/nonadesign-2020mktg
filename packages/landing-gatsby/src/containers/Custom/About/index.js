@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
 import Fade from 'react-reveal/Fade';
 import Box from 'reusecore/src/elements/Box';
 import Text from 'reusecore/src/elements/Text';
 import Heading from 'reusecore/src/elements/Heading';
-import Image from 'reusecore/src/elements/Image';
 import Container from 'common/src/components/UI/Container';
 import FeatureBlock from 'common/src/components/FeatureBlock';
 
 const About = ({
-  inputdata,	
+  inputdata,
   sectionWrapper,
   row,
   col,
@@ -27,71 +25,71 @@ const About = ({
   contentStyle,
   contentParamStyle,
 }) => {
-  
+
   return (
     <Box {...sectionWrapper}>
       <Container>
         <>
-          <Box {...row}>            
-              <Box {...col2}>
-			    <Fade up delay={100}>
+          <Box {...row}>
+            <Box {...col2}>
+              <Fade up delay={100}>
                 <FeatureBlock
                   wrapperStyle={featureBlockStyle}
                   iconStyle={iconStyle}
                   contentStyle={contentStyle}
                   title={
                     <Heading
-					  {...featureItemHeading}
+                      {...featureItemHeading}
                       content={inputdata.about_heading}
                     />
                   }
                 />
-				</Fade>
-				
-				<Fade up delay={200}>
+              </Fade>
+
+              <Fade up delay={200}>
                 <FeatureBlock
                   wrapperStyle={featureBlockStyle}
                   iconStyle={iconStyle}
                   contentStyle={contentStyle}
                   description={
                     <Text
-					  {...featureItemDes}
+                      {...featureItemDes}
                       content={inputdata.about_link_title}
                     />
                   }
                 />
-				</Fade>
-              </Box>
-              <Box {...col}>
-			    <Fade up delay={100}>
-				<FeatureBlock
-				  wrapperStyle={featureBlockStyle}
-				  iconStyle={iconStyle}
-				  contentStyle={contentParamStyle}
-				  title={
-					<Text {...paramItemHeading} content={inputdata.about_parameter1_value} />
-				  }
-				  description={
-					<Text {...paramItemDes} content={inputdata.about_parameter1_name} />
-				  }
-				/>
-				</Fade>
+              </Fade>
+            </Box>
+            <Box {...col}>
+              <Fade up delay={100}>
+                <FeatureBlock
+                  wrapperStyle={featureBlockStyle}
+                  iconStyle={iconStyle}
+                  contentStyle={contentParamStyle}
+                  title={
+                    <Text {...paramItemHeading} content={inputdata.about_parameter1_value} />
+                  }
+                  description={
+                    <Text {...paramItemDes} content={inputdata.about_parameter1_name} />
+                  }
+                />
+              </Fade>
 
-				<Fade up delay={200}>
-				<FeatureBlock
-				  wrapperStyle={featureBlockStyle}
-				  iconStyle={iconStyle}
-				  contentStyle={contentParamStyle}
-				  title={
-					<Text {...paramItemHeading} content={inputdata.about_parameter2_value} />
-				  }
-				  description={
-					<Text {...paramItemDes} content={inputdata.about_parameter2_name} />
-				  }
-				/>
-				</Fade>
-              </Box>
-            
+              <Fade up delay={200}>
+                <FeatureBlock
+                  wrapperStyle={featureBlockStyle}
+                  iconStyle={iconStyle}
+                  contentStyle={contentParamStyle}
+                  title={
+                    <Text {...paramItemHeading} content={inputdata.about_parameter2_value} />
+                  }
+                  description={
+                    <Text {...paramItemDes} content={inputdata.about_parameter2_name} />
+                  }
+                />
+              </Fade>
+            </Box>
+
           </Box>
         </>
       </Container>
@@ -204,7 +202,7 @@ About.defaultProps = {
     letterSpacing: '-0.87px',
     color: '#343d48cc',
     marginTop: '5px',
-	marginBottom: '-20px',
+    marginBottom: '-20px',
   },
 };
 
