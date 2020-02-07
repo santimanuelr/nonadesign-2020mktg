@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'common/src/theme/appclassic';
 import { ResetCSS } from 'common/src/assets/css/style';
@@ -12,14 +13,29 @@ import GlobalStyle, {
 
 import SEO from '../components/seo';
 import Container from 'common/src/components/UI/Container';
-import PageSectionWrapper, {
-  PageSectionContent,
-} from '../containers/Custom/PageSection/pagesection.style';
 
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 export default ({ data }) => {
+
+  const imgStyle = {
+    height: "450px", 
+    opacity: "0.2"
+  };
+  const titleStyle = {
+    width: "100%",
+    textAlign: "center",
+    position: "absolute",
+    top: "30%",
+    fontSize: "42px"
+  };
+  const dateStyle = {
+    fontWeight: "bold", 
+    fontSize: "14px"
+  };
+
+
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -35,30 +51,17 @@ export default ({ data }) => {
             <Navbar />
           </Sticky>
           <ContentWrapper>
-            <PageSectionWrapper id="home">
-              <Container>
-                <PageSectionContent>
-                  <Img
-                    fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid}
-                    style={{
-                      position: "absolute",
-                      left: 0,
-                      top: 0,
-                      width: "100%",
-                      height: "100%"
-                    }}
-                  />
-                  <h1> {data.wordpressPost.title} </h1>
-                  <p>
-                    Written by {data.wordpressPost.author.name} on {data.wordpressPost.date}
-                  </p>
-                  <div
-                    style={{ marginTop: 20 }}
-                    dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
-                  />
-                </PageSectionContent>
-              </Container>
-            </PageSectionWrapper>
+            <Img fluid={data.wordpressPost.featured_media.localFile.childImageSharp.fluid} object-fit="cover" objectPosition="50% 50%" alt={data.wordpressPost.title} style={imgStyle} />
+            <h1 style={titleStyle} dangerouslySetInnerHTML={{ __html: data.wordpressPost.title }} />
+            <Container>
+              <p style={dateStyle}>
+                {data.wordpressPost.date}
+              </p>
+              <div
+                style={{ marginTop: 20 }}
+                dangerouslySetInnerHTML={{ __html: data.wordpressPost.content }}
+              />
+            </Container>
           </ContentWrapper>
 
 
@@ -81,8 +84,7 @@ export const query = graphql`
         localFile {
           childImageSharp {
             fluid {
-              sizes
-              src
+              ...GatsbyImageSharpFluid
             }
           }
         }
