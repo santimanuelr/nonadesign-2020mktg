@@ -116,6 +116,8 @@ module.exports = {
           "**/*/*/menus", // <== Menu api endpoint
           "**/*/*/menu-locations", // <== Menu api endpoint
           "**/faq",
+          "**/team",
+          "**/service",
         ],
         excludedRoutes: [],
         normalizer: function({ entities }) {

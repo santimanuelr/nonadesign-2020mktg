@@ -1,13 +1,10 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Box from 'reusecore/src/elements/Box';
 import Text from 'reusecore/src/elements/Text';
-import Image from 'reusecore/src/elements/Image';
 import Logo from 'reusecore/src/elements/UI/Logo';
 import Heading from 'reusecore/src/elements/Heading';
 import Container from 'common/src/components/UI/Container';
 import FooterArea, {
-  WidgetArea,
   MenuArea,
   Menu,
   MenuItem,

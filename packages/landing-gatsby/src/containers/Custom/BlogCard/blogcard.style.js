@@ -2,77 +2,69 @@ import styled from 'styled-components';
 import { themeGet } from 'styled-system';
 
 const SectionWrapper = styled.div`
-  padding: 81px 0;
-  @media only screen and (max-width: 1440px) {
-    padding: 60px 0;
-  }
-  @media only screen and (max-width: 767px) {
-    padding: 42px 0;
-  }
+  overflow: hidden;
+  background-color: #f5f7f9;
+  margin-top: 30px;
 `;
 
-export const Container = styled.div`
-  max-width: 827px;
-  margin: 0 auto;
+export const ContentWrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  @media only screen and (max-width: 1700px) {
-    padding: 0 70px;
-  }
-  @media only screen and (max-width: 1360px) {
-    padding: 0 30px;
-  }
-  @media only screen and (max-width: 767px) {
-    flex-direction: column;
-  }
-`;
-
-export const ImageWrapper = styled.div`
-  width: calc(100% - 407px);
-  padding-right: 75px;
-  position: relative;
-  @media only screen and (max-width: 1200px) {
-    width: 60%;
-    padding-right: 50px;
-  }
-  @media only screen and (max-width: 991px) {
-    padding-right: 0;
-  }
-  @media only screen and (max-width: 767px) {
-    width: 100%;
-    padding-right: 0;
-    margin-bottom: 30px;
-    transform: rotateY(-180deg);
-  }
-`;
-
-export const TextWrapper = styled.div`
-  width: 407px;
-  @media only screen and (max-width: 991px) {
-    padding-left: 50px;
-  }
-  @media only screen and (max-width: 767px) {
-    padding-left: 0;
-    width: 100%;
-  }
-
-  h2 {
-    color: ${themeGet('colors.menu', '#0D233E')};
-    @media only screen and (min-width: 1441px) {
-      margin-bottom: 40px;
+  .image {
+    width: calc(100% - 710px);
+    @media only screen and (max-width: 991px) {
+      width: calc(100% - 290px);
     }
-    @media only screen and (min-width: 1440px) {
-      margin-bottom: 30px;
-    }
-    @media only screen and (min-width: 767px) {
-      margin-bottom: 20px;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
     }
   }
-
-  p {
-    margin-bottom: 30px;
+  .content {
+    width: 710px;
+    padding-left: 30px;
+    @media only screen and (max-width: 991px) {
+      width: 290px;
+    }
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+    }
+    h2 {
+      color: ${themeGet('colors.headingColor', '#0F2137')};
+      font-size: 24px;
+      font-weight: 500;
+      @media only screen and (max-width: 991px) {
+        font-size: 22px;
+      }
+      @media only screen and (max-width: 768px) {
+        max-width: 100%;
+      }
+    }
+    p {
+      font-size: 16px;
+      line-height: 26px;
+      color: #6e7379;
+      margin-bottom: 0px;
+      @media only screen and (max-width: 1366px) {
+        margin-bottom: 0px;
+      }
+      @media only screen and (max-width: 768px) {
+        text-align: center;
+      }
+    }
+    h5 {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      margin-bottom: 0px;
+      letter-spacing: 1.5px;
+      color: ${themeGet('colors.primary', '#0F2137')};
+      text-transform: uppercase;
+      @media only screen and (max-width: 768px) {
+        text-align: center;
+      }
+    }
   }
-
 `;
 
 export default SectionWrapper;

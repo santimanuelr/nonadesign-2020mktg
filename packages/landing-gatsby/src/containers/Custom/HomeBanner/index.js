@@ -1,13 +1,11 @@
 import React from 'react';
-import Image from 'gatsby-image';
 import PropTypes from 'prop-types';
-import Icon from 'react-icons-kit';
 import Fade from 'react-reveal/Fade';
 import Box from 'reusecore/src/elements/Box';
 import Text from 'reusecore/src/elements/Text';
 import Heading from 'reusecore/src/elements/Heading';
 import Container from 'common/src/components/UI/Container';
-import { BannerWrapper, DiscountWrapper, DiscountLabel } from './homebanner.style';
+import { BannerWrapper} from './homebanner.style';
 
 const BannerSection = ({
   inputdata,	
@@ -75,7 +73,6 @@ BannerSection.defaultProps = {
     fontSize: '40px',
     fontWeight: '500',
     letterSpacing: '-1.33px',
-	lineHeight: '50px',
     mb: ['20px', '25px', '25px', '25px', '25px'],
     lineHeight: '1.2',
     textAlign: 'left',

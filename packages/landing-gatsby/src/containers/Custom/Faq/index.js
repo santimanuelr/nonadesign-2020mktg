@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { Icon } from 'react-icons-kit';
 import { plusCircled } from 'react-icons-kit/ionicons/plusCircled';
 import { minusCircled } from 'react-icons-kit/ionicons/minusCircled';
-import Text from 'reusecore/src/elements/Text';
 import Heading from 'reusecore/src/elements/Heading';
 import Container from 'common/src/components/UI/Container';
 import {

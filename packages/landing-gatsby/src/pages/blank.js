@@ -14,8 +14,6 @@ import GlobalStyle, {
 import SEO from '../components/seo';
 import Container from 'common/src/components/UI/Container';
 
-import { graphql } from "gatsby"
-
 export default ({ data }) => {
   return (
     <ThemeProvider theme={theme}>

@@ -14,7 +14,6 @@ import SEO from '../components/seo';
 import Container from 'common/src/components/UI/Container';
 import PageSectionWrapper, {
   PageSectionContent,
-  PageSectionImage,
 } from '../containers/Custom/PageSection/pagesection.style';
 
 import { graphql } from "gatsby"

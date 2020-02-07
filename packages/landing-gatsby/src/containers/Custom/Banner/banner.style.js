@@ -5,7 +5,7 @@ const BannerWrapper = styled.div`
   padding-top: 200px;
   padding-bottom: 130px;
   min-height: 300px;
-  max-width: 1270px;
+  max-width: 1440px;
   width: 100%;
   background-color: ${themeGet('colors.lights', '#f3effd')};
   overflow: hidden;
@@ -18,7 +18,7 @@ const BannerWrapper = styled.div`
 `;
 
 export const BannerContent = styled.div`
-  max-width: 1270px;
+  max-width: 1440px;
   width: 100%;
   @media only screen and (max-width: 991px) {
     flex-shrink: 0;
