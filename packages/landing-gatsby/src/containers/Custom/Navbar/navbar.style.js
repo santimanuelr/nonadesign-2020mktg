@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { themeGet } from 'styled-system';
-import searchIcon from 'common/src/assets/image/appClassic/search.svg';
+import styled from "styled-components";
+import { themeGet } from "styled-system";
+import searchIcon from "common/src/assets/image/appClassic/search.svg";
 
 const NavbarWrapper = styled.nav`
   width: 100%;
   padding: 25px 0 26px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  background-color: ${themeGet('colors.light', '#FAFBFF')};
+  background-color: ${themeGet("colors.light", "#FAFBFF")};
   position: fixed;
   z-index: 9999;
   transition: all 0.3s ease;
@@ -28,13 +28,13 @@ const NavbarWrapper = styled.nav`
   ul {
     li {
       a {
-        color: ${themeGet('colors.menu', '#0D233E')};
+        color: ${themeGet("colors.menu", "#0D233E")};
         font-size: 16px;
         font-weight: 400;
       }
       &.is-current {
         a {
-          color: ${themeGet('colors.primary', '#2563FF')};
+          color: ${themeGet("colors.primary", "#2563FF")};
         }
       }
     }
@@ -105,7 +105,7 @@ export const MenuArea = styled.div`
         svg {
           width: 22px;
           height: auto;
-          stroke: ${themeGet('colors.menu', '0D233E')};
+          stroke: ${themeGet("colors.menu", "0D233E")};
           @media only screen and (max-width: 991px) {
             width: 24px;
           }
@@ -156,8 +156,8 @@ export const Search = styled.div`
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.05);
     font-size: 15px;
-    color: ${themeGet('colors.menu', '0D233E')};
-    background-color: ${themeGet('colors.light', '#FAFBFF')};
+    color: ${themeGet("colors.menu", "0D233E")};
+    background-color: ${themeGet("colors.light", "#FAFBFF")};
     background-image: url(${searchIcon});
     background-repeat: no-repeat;
     background-position: calc(100% - 15px) center;
@@ -165,11 +165,69 @@ export const Search = styled.div`
     z-index: 1;
     transition: all 0.3s ease 0.1s;
     &::placeholder {
-      color: ${themeGet('colors.textColor', 'rgba(52, 61, 72, 0.8)')};
+      color: ${themeGet("colors.textColor", "rgba(52, 61, 72, 0.8)")};
     }
     &:focus {
-      border-color: ${themeGet('colors.primary', '#2563FF')};
+      border-color: ${themeGet("colors.primary", "#2563FF")};
     }
+  }
+`;
+
+export const Menu2 = styled.span`
+  font-size: 30px;
+  cursor: pointer;
+`;
+
+export const MenuClose = styled.span`
+  font-size: 35px;
+  cursor: pointer;
+`;
+
+export const OtherMenu = styled.div`
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .overlay a:hover,
+  .overlay a:focus {
+    color: #f1f1f1;
+  }
+
+  .scrollspy__menu a {
+    font-size: 38px;
+    line-height: 1.4em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
   }
 `;
 
@@ -185,13 +243,13 @@ export const MobileMenu = styled.div`
     position: absolute;
     top: 82px;
     flex-direction: column;
-    background-color: ${themeGet('colors.white', '#ffffff')};
+    background-color: ${themeGet("colors.white", "#ffffff")};
     transition: all 0.3s ease;
     &.active {
       opacity: 1;
       visibility: visible;
       box-shadow: 0 3px 12px
-        ${themeGet('colors.shadow', 'rgba(38, 78, 118, 0.1)')};
+        ${themeGet("colors.shadow", "rgba(38, 78, 118, 0.1)")};
     }
     .container {
       width: 100%;
@@ -212,8 +270,8 @@ export const MobileMenu = styled.div`
         &:hover {
           a {
             padding: 13px 15px;
-            color: ${themeGet('colors.white', '#ffffff')};
-            background-color: ${themeGet('colors.primary')};
+            color: ${themeGet("colors.white", "#ffffff")};
+            background-color: ${themeGet("colors.primary")};
           }
         }
       }

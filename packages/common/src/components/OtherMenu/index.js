@@ -5,7 +5,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 
 import { DrawerContext } from "../../contexts/DrawerContext";
 
-const ScrollSpyMenu = ({ className, menuItems, drawerClose, ...props }) => {
+const OtherMenuSpy = ({ className, menuItems, drawerClose, ...props }) => {
   const { dispatch } = useContext(DrawerContext);
   // empty array for scrollspy items
   const scrollItems = [];
@@ -64,8 +64,8 @@ const ScrollSpyMenu = ({ className, menuItems, drawerClose, ...props }) => {
   );
 };
 
-ScrollSpyMenu.propTypes = {
-  /** className of the ScrollSpyMenu. */
+OtherMenuSpy.propTypes = {
+  /** className of the OtherMenuSpy. */
   className: PropTypes.string,
 
   /** menuItems is an array of object prop which contain your menu
@@ -97,9 +97,9 @@ ScrollSpyMenu.propTypes = {
   onUpdate: PropTypes.func
 };
 
-ScrollSpyMenu.defaultProps = {
+OtherMenuSpy.defaultProps = {
   componentTag: "ul",
   currentClassName: "is-current"
 };
 
-export default ScrollSpyMenu;
+export default OtherMenuSpy;

@@ -1,17 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import Image from "reusecore/src/elements/Image";
 import Box from "reusecore/src/elements/Box";
 import Text from "reusecore/src/elements/Text";
-import Heading from "reusecore/src/elements/Heading";
 import Link from "reusecore/src/elements/Link";
 import FeatureBlock from "common/src/components/FeatureBlock";
 import Container from "common/src/components/UI/Container";
 import TeamSectionWrapper from "./team.style";
-
-import bannerImg from "common/src/assets/image/appClassic/appSlider1.png";
 
 const TeamSection = ({
   row,

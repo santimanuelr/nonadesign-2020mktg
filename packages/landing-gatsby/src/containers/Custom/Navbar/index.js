@@ -1,19 +1,23 @@
-import React, { useState, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Fade from 'react-reveal/Fade';
-import ScrollSpyMenu from 'common/src/components/ScrollSpyMenu';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-import { Icon } from 'react-icons-kit';
-import { menu } from 'react-icons-kit/feather/menu';
-import { x } from 'react-icons-kit/feather/x';
-import { search } from 'react-icons-kit/feather/search';
-import Logo from 'reusecore/src/elements/UI/Logo';
-import Button from 'reusecore/src/elements/Button';
-import Container from 'common/src/components/UI/Container';
-import useOnClickOutside from 'common/src/hooks/useOnClickOutside';
-import NavbarWrapper, { MenuArea, MobileMenu, Search } from './navbar.style';
+import React, { useState, useRef } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import Fade from "react-reveal/Fade";
+import ScrollSpyMenu from "common/src/components/ScrollSpyMenu";
+import { Icon } from "react-icons-kit";
+import { menu } from "react-icons-kit/feather/menu";
+import { x } from "react-icons-kit/feather/x";
+import Logo from "reusecore/src/elements/UI/Logo";
+import Button from "reusecore/src/elements/Button";
+import Container from "common/src/components/UI/Container";
+import useOnClickOutside from "common/src/hooks/useOnClickOutside";
+import NavbarWrapper, {
+  MenuArea,
+  MobileMenu,
+  Menu2,
+  MenuClose
+} from "./navbar.style";
+import OtherMenuSpy from "common/src/components/OtherMenu";
 
-const Navbar = () => {
+const Navbar = ({ showMenu, openMenu }) => {
   const data = useStaticQuery(graphql`
     query {
       appClassicJson {
@@ -36,19 +40,17 @@ const Navbar = () => {
   let navMenuData = [];
   for (var i = 0; i < data.wordpressWpApiMenusMenusItems.items.length; i++) {
     navMenuData[navMenuData.length] = {
-      "id": (i + 1),
-      "label": data.wordpressWpApiMenusMenusItems.items[i].title,
-      "path": data.wordpressWpApiMenusMenusItems.items[i].url,
-      "offset": "84",
-      "staticLink": true
+      id: i + 1,
+      label: data.wordpressWpApiMenusMenusItems.items[i].title,
+      path: data.wordpressWpApiMenusMenusItems.items[i].url,
+      offset: "84",
+      staticLink: true
     };
   }
-  //console.log(navMenuData);
 
   const [state, setState] = useState({
-    search: '',
-    searchToggle: false,
     mobileMenu: false,
+    openMenu: false
   });
 
   const searchRef = useRef(null);
@@ -57,44 +59,48 @@ const Navbar = () => {
   );
 
   const toggleHandler = type => {
-    if (type === 'search') {
+    if (type === "search") {
       setState({
         ...state,
-        search: '',
+        search: "",
         searchToggle: !state.searchToggle,
-        mobileMenu: false,
+        mobileMenu: false
       });
     }
-
-    if (type === 'menu') {
+    console.log("Please fill this field.");
+    if (type === "menu") {
+      // setState({
+      //   ...state,
+      //   mobileMenu: !state.mobileMenu
+      // });
       setState({
         ...state,
-        mobileMenu: !state.mobileMenu,
+        openMenu: !state.openMenu
       });
     }
   };
 
-  const handleOnChange = event => {
-    setState({
-      ...state,
-      search: event.target.value,
-    });
-  };
+  // const handleOnChange = event => {
+  //   setState({
+  //     ...state,
+  //     search: event.target.value
+  //   });
+  // };
 
-  const handleSearchForm = event => {
-    event.preventDefault();
+  // const handleSearchForm = event => {
+  //   event.preventDefault();
 
-    if (state.search !== '') {
-      console.log('search data: ', state.search);
+  //   if (state.search !== "") {
+  //     console.log("search data: ", state.search);
 
-      setState({
-        ...state,
-        search: '',
-      });
-    } else {
-      console.log('Please fill this field.');
-    }
-  };
+  //     setState({
+  //       ...state,
+  //       search: ""
+  //     });
+  //   } else {
+  //     console.log("Please fill this field.");
+  //   }
+  // };
 
   return (
     <NavbarWrapper className="navbar">
@@ -107,11 +113,23 @@ const Navbar = () => {
         />
         {/* end of logo */}
 
-        <MenuArea className={state.searchToggle ? 'active' : ''}>
-          <ScrollSpyMenu className="menu" menuItems={navMenuData} offset={-84} />
+        <MenuArea className={state.searchToggle ? "active" : ""}>
+          {/* <ScrollSpyMenu
+            className="menu"
+            menuItems={navMenuData}
+            offset={-84}
+          /> */}
           {/* end of main menu */}
-
-          <Search className="search" ref={searchRef}>
+          {openMenu ? (
+            <MenuClose className="search" onClick={showMenu}>
+              &times;
+            </MenuClose>
+          ) : (
+            <Menu2 className="search" onClick={showMenu}>
+              &#9776;
+            </Menu2>
+          )}
+          {/* <Search className="search" ref={searchRef}>
             <form onSubmit={handleSearchForm}>
               <input
                 type="text"
@@ -124,14 +142,14 @@ const Navbar = () => {
               className="text"
               variant="textButton"
               icon={<Icon icon={state.searchToggle ? x : search} />}
-              onClick={() => toggleHandler('search')}
+              onClick={() => toggleHandler("search")}
             />
-          </Search>
+          </Search> */}
           {/* end of search */}
 
-          <AnchorLink href="#trail" offset={84}>
+          {/* <AnchorLink href="#trail" offset={84}>
             <Button className="trail" title="Try for Free" />
-          </AnchorLink>
+          </AnchorLink> */}
 
           <Button
             className="menubar"
@@ -139,22 +157,26 @@ const Navbar = () => {
               state.mobileMenu ? (
                 <Icon className="bar" icon={x} />
               ) : (
-                  <Fade>
-                    <Icon className="close" icon={menu} />
-                  </Fade>
-                )
+                <Fade>
+                  <Icon className="close" icon={menu} />
+                </Fade>
+              )
             }
             color="#0F2137"
             variant="textButton"
-            onClick={() => toggleHandler('menu')}
+            onClick={() => toggleHandler("menu")}
           />
         </MenuArea>
       </Container>
 
       {/* start mobile menu */}
-      <MobileMenu className={`mobile-menu ${state.mobileMenu ? 'active' : ''}`}>
+      <MobileMenu className={`mobile-menu ${state.mobileMenu ? "active" : ""}`}>
         <Container>
-          <ScrollSpyMenu className="menu" menuItems={navMenuData} offset={-84} />
+          <ScrollSpyMenu
+            className="menu"
+            menuItems={navMenuData}
+            offset={-84}
+          />
           <Button title="Try for Free" />
         </Container>
       </MobileMenu>

@@ -1,9 +1,7 @@
 import React from "react";
-import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import Box from "reusecore/src/elements/Box";
-import Text from "reusecore/src/elements/Text";
 import Heading from "reusecore/src/elements/Heading";
 import FeatureBlock from "common/src/components/FeatureBlock";
 import Container from "common/src/components/UI/Container";
@@ -22,53 +20,6 @@ const ServiceItems = ({
   blockWrapperStyle,
   items
 }) => {
-  // const Data = {
-  //   features: [
-  //     {
-  //       id: 1,
-  //       icon: "flaticon-flask",
-  //       title: "Search Optimization",
-  //       description:
-  //         "By using Search Engine Optimization, You will get more Clients"
-  //     },
-  //     {
-  //       id: 2,
-  //       icon: "flaticon-pencil-case",
-  //       title: "Ui/UX Design",
-  //       description:
-  //         "We provide the best UI/UX Design by following the latest trends of the market ."
-  //     },
-  //     {
-  //       id: 3,
-  //       icon: "flaticon-ruler",
-  //       title: "Wireframing Task",
-  //       description:
-  //         "We respect our customer opinions and deals with them with perfect wireframing "
-  //     },
-  //     {
-  //       id: 4,
-  //       icon: "flaticon-startup",
-  //       title: "Business Solutions",
-  //       description:
-  //         "We are commited to provide proper business solutions with reasonable pricing"
-  //     },
-  //     {
-  //       id: 5,
-  //       icon: "flaticon-briefing",
-  //       title: "Business Analysis",
-  //       description:
-  //         "A day to day report about your ongoing business for proper understanding"
-  //     },
-  //     {
-  //       id: 6,
-  //       icon: "flaticon-creative",
-  //       title: "Content Management",
-  //       description:
-  //         "Proper Content Management is important to find out the real clients for your agencies"
-  //     }
-  //   ]
-  // };
-
   return (
     <ServiceItemsWrapper id="ServiceItems">
       <Container>
