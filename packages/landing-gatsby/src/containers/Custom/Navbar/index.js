@@ -16,6 +16,7 @@ import NavbarWrapper, {
   MenuClose
 } from "./navbar.style";
 import OtherMenuSpy from "common/src/components/OtherMenu";
+import AppWrapper from "../AppWrapper";
 
 const Navbar = ({ showMenu, openMenu }) => {
   const data = useStaticQuery(graphql`
@@ -69,12 +70,9 @@ const Navbar = ({ showMenu, openMenu }) => {
     }
     console.log("Please fill this field.");
     if (type === "menu") {
-      // setState({
-      //   ...state,
-      //   mobileMenu: !state.mobileMenu
-      // });
       setState({
         ...state,
+        mobileMenu: !state.mobileMenu,
         openMenu: !state.openMenu
       });
     }
@@ -120,12 +118,12 @@ const Navbar = ({ showMenu, openMenu }) => {
             offset={-84}
           /> */}
           {/* end of main menu */}
-          {openMenu ? (
-            <MenuClose className="search" onClick={showMenu}>
+          {state.openMenu ? (
+            <MenuClose className="search" onClick={() => toggleHandler("menu")}>
               &times;
             </MenuClose>
           ) : (
-            <Menu2 className="search" onClick={showMenu}>
+            <Menu2 className="search" onClick={() => toggleHandler("menu")}>
               &#9776;
             </Menu2>
           )}
@@ -169,6 +167,8 @@ const Navbar = ({ showMenu, openMenu }) => {
         </MenuArea>
       </Container>
 
+      <AppWrapper openMenuParam={state.openMenu}></AppWrapper>
+
       {/* start mobile menu */}
       <MobileMenu className={`mobile-menu ${state.mobileMenu ? "active" : ""}`}>
         <Container>
@@ -177,7 +177,7 @@ const Navbar = ({ showMenu, openMenu }) => {
             menuItems={navMenuData}
             offset={-84}
           />
-          <Button title="Try for Free" />
+          {/* <Button title="Try for Free" /> */}
         </Container>
       </MobileMenu>
       {/* end of mobile menu */}

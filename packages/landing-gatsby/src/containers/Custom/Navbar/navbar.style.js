@@ -176,33 +176,60 @@ export const Search = styled.div`
 export const Menu2 = styled.span`
   font-size: 30px;
   cursor: pointer;
+  @media only screen and (max-width: 991px) {
+    display: none;
+  }
 `;
 
 export const MenuClose = styled.span`
   font-size: 35px;
   cursor: pointer;
+  @media only screen and (max-width: 991px) {
+    display: none;
+  }
 `;
 
 export const OtherMenu = styled.div`
-  height: 100%;
-  position: fixed;
   z-index: 1;
-  top: 0;
   left: 0;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.9);
   overflow-x: hidden;
   transition: 0.5s;
 
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 70px);
+  padding: 0px 0 40px;
+  position: absolute;
+  top: 82px;
+  flex-direction: column;
+  background-color: ${themeGet("colors.white", "#ffffff")};
+  transition: all 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+  box-shadow: 0 3px 12px ${themeGet("colors.shadow", "rgba(38, 78, 118, 0.1)")};
+
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media only screen and (max-width: 991px) {
+    display: none;
+  }
+
   .overlay-content {
     position: relative;
     top: 25%;
     width: 100%;
     text-align: center;
-    margin-top: 30px;
   }
 
-  .overlay a {
+  .container a {
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
@@ -211,9 +238,11 @@ export const OtherMenu = styled.div`
     transition: 0.3s;
   }
 
-  .overlay a:hover,
-  .overlay a:focus {
+  .container a:hover,
+  .container a:focus {
     color: #f1f1f1;
+    color: ${themeGet("colors.white", "#ffffff")};
+    background-color: ${themeGet("colors.primary")};
   }
 
   .scrollspy__menu a {

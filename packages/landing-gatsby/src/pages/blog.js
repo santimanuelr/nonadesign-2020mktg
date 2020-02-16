@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "common/src/theme/appclassic";
 import { ResetCSS } from "common/src/assets/css/style";
@@ -7,8 +7,10 @@ import Navbar from "../containers/Custom/Navbar";
 import Banner from "../containers/Custom/Banner";
 import BlogCard from "../containers/Custom/BlogCard";
 import Footer from "../containers/Custom/Footer";
-import AppWrapper from "../containers/Custom/AppWrapper";
-import GlobalStyle, { ContentWrapper } from "../containers/Custom/Custom.style";
+import GlobalStyle, {
+  ContentWrapper,
+  AppWrapperDiv
+} from "../containers/Custom/Custom.style";
 
 import SEO from "../components/seo";
 import Container from "common/src/components/UI/Container";
@@ -17,31 +19,6 @@ import { graphql } from "gatsby";
 
 export default ({ data }) => {
   const posts = data.allWordpressPost.edges;
-
-  const [state, setState] = useState({
-    mobileMenu: false,
-    openMenu: false
-  });
-
-  const toggleHandlerAux = type => {
-    if (type === "search") {
-      setState({
-        ...state,
-        mobileMenu: false
-      });
-    }
-    console.log("Please fill this field.");
-    if (type === "menu") {
-      // setState({
-      //   ...state,
-      //   mobileMenu: !state.mobileMenu
-      // });
-      setState({
-        ...state,
-        openMenu: !state.openMenu
-      });
-    }
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -53,12 +30,9 @@ export default ({ data }) => {
         <ResetCSS />
         <GlobalStyle />
 
-        <AppWrapper openMenuParam={state.openMenu}>
+        <AppWrapperDiv>
           <Sticky top={0} innerZ={9999} activeClass="sticky-active">
-            <Navbar
-              showMenu={() => toggleHandlerAux("menu")}
-              openMenu={state.openMenu}
-            />
+            <Navbar />
           </Sticky>
           <ContentWrapper>
             <Container fullWidth="true" noGutter="true">
@@ -85,7 +59,7 @@ export default ({ data }) => {
             </Container>
           </ContentWrapper>
           <Footer />
-        </AppWrapper>
+        </AppWrapperDiv>
       </>
     </ThemeProvider>
   );

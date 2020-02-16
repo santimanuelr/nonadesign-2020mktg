@@ -2,9 +2,9 @@ import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 
-import { AppWrapperDiv } from "../Custom.style";
 import { OtherMenu } from "../Navbar/navbar.style";
 import OtherMenuSpy from "common/src/components/OtherMenu";
+import Container from "common/src/components/UI/Container";
 
 //class AppWrapper extends React.Component {
 export default function({ children, openMenuParam }) {
@@ -32,21 +32,20 @@ export default function({ children, openMenuParam }) {
   }
 
   return (
-    <AppWrapperDiv>
-      <OtherMenu
-        style={{ width: openMenuParam ? "100%" : "0%" }}
-        className={"overlay"}
-        // onClickCapture={() => this.toggleHandler("menu")}
-        // onClick={() => this.toggleHandler("menu")}
-      >
+    <OtherMenu
+      style={{ width: openMenuParam ? "100%" : "0%" }}
+      className={"overlay"}
+      // onClickCapture={() => this.toggleHandler("menu")}
+      // onClick={() => this.toggleHandler("menu")}
+    >
+      <Container>
         <OtherMenuSpy
           className="overlay-content"
           menuItems={navMenuData}
           offset={-84}
         />
-      </OtherMenu>
-      {children}
-    </AppWrapperDiv>
+      </Container>
+    </OtherMenu>
   );
 }
 
