@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { OtherMenu } from "../Navbar/navbar.style";
 import OtherMenuSpy from "common/src/components/OtherMenu";
 import Container from "common/src/components/UI/Container";
+import Button from "reusecore/src/elements/Button";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 //class AppWrapper extends React.Component {
 export default function({ children, openMenuParam }) {
@@ -38,7 +40,28 @@ export default function({ children, openMenuParam }) {
       // onClickCapture={() => this.toggleHandler("menu")}
       // onClick={() => this.toggleHandler("menu")}
     >
-      <Container>
+      <Container className={"container-left"}>
+        <h4>Contact Us</h4>
+        <h2>
+          Have a project in mind?<br></br>Ready to get started? Tell<br></br>all
+          about it!
+        </h2>
+        <AnchorLink className="contact" href="#contact-us" offset={84}>
+          <Button title="CONTACT US" />
+        </AnchorLink>
+        <ul class="contact-info-list">
+          <li>
+            <a href="#">General Inquiries</a>
+          </li>
+          <li>
+            <a href="#">info@parsonstko.com</a>
+          </li>
+          <li>
+            <a href="#">202.335.7856</a>
+          </li>
+        </ul>
+      </Container>
+      <Container className={"container-right"}>
         <OtherMenuSpy
           className="overlay-content"
           menuItems={navMenuData}

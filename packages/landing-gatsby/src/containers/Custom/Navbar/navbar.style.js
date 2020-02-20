@@ -197,7 +197,7 @@ export const OtherMenu = styled.div`
   overflow-x: hidden;
   transition: 0.5s;
 
-  display: flex;
+  display: block;
   width: 100%;
   height: calc(100vh - 70px);
   padding: 0px 0 40px;
@@ -211,11 +211,24 @@ export const OtherMenu = styled.div`
   box-shadow: 0 3px 12px ${themeGet("colors.shadow", "rgba(38, 78, 118, 0.1)")};
 
   .container {
-    width: 100%;
     height: 100%;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
+    display: inline-block;
+    width: 50%;
+    float: left;
+    padding: 40px;
+    height: 100vh;
+    position: relative;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .container-left {
+  }
+
+  .container-right {
+    background-color: #2a2b2e;
   }
 
   @media only screen and (max-width: 991px) {
@@ -229,7 +242,7 @@ export const OtherMenu = styled.div`
     text-align: center;
   }
 
-  .container a {
+  .container-right a {
     padding: 8px;
     text-decoration: none;
     font-size: 36px;
@@ -238,14 +251,40 @@ export const OtherMenu = styled.div`
     transition: 0.3s;
   }
 
-  .container a:hover,
-  .container a:focus {
+  .container-left a {
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .container-left h2 {
+    font-size: 38px;
+  }
+
+  .container-left h4 {
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+
+  .contact {
+    margin: 20px 0;
+  }
+
+  .container-right a {
+    color: #fff;
+  }
+
+  .container-right a:hover,
+  .container-right a:focus {
     color: #f1f1f1;
     color: ${themeGet("colors.white", "#ffffff")};
     background-color: ${themeGet("colors.primary")};
   }
 
   .scrollspy__menu a {
+    text-align: right;
     font-size: 38px;
     line-height: 1.4em;
     text-transform: uppercase;
