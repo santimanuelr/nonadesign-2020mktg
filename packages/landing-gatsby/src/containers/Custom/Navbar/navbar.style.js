@@ -20,7 +20,7 @@ const NavbarWrapper = styled.nav`
     justify-content: space-between;
     .logo {
       img {
-        width: 128px;
+        width: 65px;
         height: auto;
       }
     }

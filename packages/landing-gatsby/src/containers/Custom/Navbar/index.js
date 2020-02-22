@@ -17,6 +17,7 @@ import NavbarWrapper, {
 } from "./navbar.style";
 import OtherMenuSpy from "common/src/components/OtherMenu";
 import AppWrapper from "../AppWrapper";
+import logo from "../../../images/jjcreative-logo.svg";
 
 const Navbar = ({ showMenu, openMenu }) => {
   const data = useStaticQuery(graphql`
@@ -36,7 +37,7 @@ const Navbar = ({ showMenu, openMenu }) => {
       }
     }
   `);
-  const { logo } = data.appClassicJson.navbar;
+  //const { logo } = data.appClassicJson.navbar;
 
   let navMenuData = [];
   for (var i = 0; i < data.wordpressWpApiMenusMenusItems.items.length; i++) {
@@ -103,12 +104,7 @@ const Navbar = ({ showMenu, openMenu }) => {
   return (
     <NavbarWrapper className="navbar">
       <Container>
-        <Logo
-          className="logo"
-          href="/"
-          logoSrc={logo.publicURL}
-          title="App Classic"
-        />
+        <Logo className="logo" href="/" logoSrc={logo} title="App Classic" />
         {/* end of logo */}
 
         <MenuArea className={state.searchToggle ? "active" : ""}>
